@@ -21,7 +21,7 @@ export default {
     useHead({
       titleTemplate: (titleChunk) => {
         console.log('titleChunk', titleChunk)
-        return titleChunk ? `${titleChunk} - 极客时间企业版` : '极客时间企业版';
+        return titleChunk ? `${titleChunk} - Nuxt Start` : 'Nuxt Start';
       }
     })
 
