@@ -1,4 +1,4 @@
-@import "./_colors.scss";
+@use './_colors.scss' as *;
 
 // 公共动画
 %transition {
@@ -7,10 +7,10 @@
 
 // 单行文字超出部分显示省略号
 %row {
-  overflow:hidden;
-  word-break:keep-all;
-  white-space:nowrap;
-  text-overflow:ellipsis;
+  overflow: hidden;
+  word-break: keep-all;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 %center {
@@ -48,14 +48,14 @@
 }
 /* 阴影 */
 %shadow {
-  box-shadow: 0 7px 15px rgba($color: #EEF2F5, $alpha: 0.8);
+  box-shadow: 0 7px 15px rgba($color: #eef2f5, $alpha: 0.8);
 }
 
 /*
  * 多行文字超出部分显示省略号
  * autoprefixer 为 webpack 兼容方案，防止过时属性被删除
  */
-@mixin row ($line) {
+@mixin row($line) {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: $line;
@@ -64,55 +64,56 @@
 }
 
 // 基础字号封装，字重默认为 400
-@mixin font ($size, $weight: 400) {
-  font-size: $size + px; font-weight: $weight;
+@mixin font($size, $weight: 400) {
+  font-size: $size + px;
+  font-weight: $weight;
 }
 
 // line-height 等于字号
-@mixin lineFont ($size, $weight: 400) {
+@mixin lineFont($size, $weight: 400) {
   line-height: 1;
-  @include font($size, $weight)
+  @include font($size, $weight);
 }
 
 // 0.5px
-@mixin halfpixel ($borderHeight) {
-  transform: scaleY(calc($borderHeight / 2))
+@mixin halfpixel($borderHeight) {
+  transform: scaleY(calc($borderHeight / 2));
 }
 
 // 布局类型：PC
 @mixin web {
-  [app-layout-type="pc"] {
+  [app-layout-type='pc'] {
     @content;
   }
 }
 
 // 布局类型：PC，应用到样式内
 @mixin webInner {
-  [app-layout-type="pc"] & {
+  [app-layout-type='pc'] & {
     @content;
   }
 }
 
 // 布局类型：移动端
 @mixin mobile {
-  [app-layout-type="mobile"] {
+  [app-layout-type='mobile'] {
     @content;
   }
 }
 
 // 布局类型：移动端
 @mixin mobileInner {
-  [app-layout-type="mobile"] & {
+  [app-layout-type='mobile'] & {
     @content;
   }
 }
 
 %linearOrange {
-  background: linear-gradient(270deg, #FA8919 1%, #FFA54B 100%);
+  background: linear-gradient(270deg, #fa8919 1%, #ffa54b 100%);
 }
 
 %linearBlue {
-  background: #4285F4;
+  background: #4285f4;
 }
 
 %bottomLine {
@@ -121,9 +122,13 @@
   &:after {
     content: '';
     display: block;
-    position: absolute; left: 0; right: 0; bottom: -1px; z-index: 10;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    z-index: 10;
     height: 1px;
-    background: #E8E8E8;
+    background: #e8e8e8;
     transform: scaleY(0.5);
   }
 }
@@ -134,9 +139,13 @@
   &:after {
     content: '';
     display: block;
-    position: absolute; left: 0; bottom: 0; right: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
     height: 1px;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAAHuhoaxAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAAaADAAQAAAABAAAAAgAAAAC+gucuAAAAEElEQVQIHWN4+ertfwYQAAAcAAPAK4oUCwAAAABJRU5ErkJggg==') repeat-x;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAAHuhoaxAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAAaADAAQAAAABAAAAAgAAAAC+gucuAAAAEElEQVQIHWN4+ertfwYQAAAcAAPAK4oUCwAAAABJRU5ErkJggg==')
+      repeat-x;
     background-size: 1px 1px;
   }
 
@@ -155,13 +164,17 @@
   &:after {
     content: '';
     display: block;
-    position: absolute; left: 0; #{$position}: 0; right: 0;
+    position: absolute;
+    left: 0;
+    #{$position}: 0;
+    right: 0;
     height: 1px;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAAHuhoaxAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAAaADAAQAAAABAAAAAgAAAAC+gucuAAAAEElEQVQIHWN4+ertfwYQAAAcAAPAK4oUCwAAAABJRU5ErkJggg==') repeat-x;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAAHuhoaxAAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAAaADAAQAAAABAAAAAgAAAAC+gucuAAAAEElEQVQIHWN4+ertfwYQAAAcAAPAK4oUCwAAAABJRU5ErkJggg==')
+      repeat-x;
     background-size: 1px 1px;
   }
 
-  @if $position == bottom  {
+  @if $position == bottom {
     @if $hideLastChild == hide {
       &:last-child:after {
         display: none;
@@ -172,29 +185,30 @@
 
 // deep
 @mixin deep($selector) {
-	:deep(#{$selector}) {
+  :deep(#{$selector}) {
     @content;
   }
 }
 
 // ios 安全下边距
-@mixin safePadding ($height: 0) {
+@mixin safePadding($height: 0) {
   @supports (padding-bottom: env(safe-area-inset-bottom)) {
     padding-bottom: calc(#{$height}px + env(safe-area-inset-bottom));
   }
 }
 
-@mixin safeHeight ($height: 0) {
+@mixin safeHeight($height: 0) {
   @supports (height: env(safe-area-inset-bottom)) {
     &:after {
       content: '';
       display: block;
-      width: 100%; height: calc(#{$height}px + env(safe-area-inset-bottom));
+      width: 100%;
+      height: calc(#{$height}px + env(safe-area-inset-bottom));
     }
   }
 }
 
-@mixin supportsBottom () {
+@mixin supportsBottom() {
   @supports (padding-bottom: env(safe-area-inset-bottom)) {
     @content;
   }
