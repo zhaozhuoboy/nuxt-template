@@ -11,7 +11,7 @@
     <div :class="$style['list']">
       <template :key="item.name" v-for="item in blocks">
         <a :href="item.link" target="_blank">
-          <NCard>
+          <NCard :class="$style['card']">
             <div :class="$style['block']">
               <div :class="$style['logo']">
                 <img :src="item.icon" alt="">
@@ -104,15 +104,50 @@ export default {
   margin: 50px 0;
   gap: 30px;
 
+  .card {
+    transform: all 0.3s ease;
+  }
+
   & a {
     text-decoration: none;
+    transform: all 0.3s ease;
   }
+
+
+  @include sm() {
+    & a {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    & .card {
+      width: 100%;
+    }
+  }
+
+  @include lg() {
+    flex-direction: row;
+
+    & a {
+      width: auto;
+    }
+    & .card {
+      width: auto;
+    }
+  }
+
 }
 
 .block {
   width: 100px; height: 150px;
   @extend %center;
   flex-direction: column;
+  transform: all 0.3s ease;
+
+  @include sm() {
+    margin: 0 auto;
+  }
 
   & .logo {
     display: flex;
