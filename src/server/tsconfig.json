@@ -1,5 +1,5 @@
 {
-  "extends": "../.nuxt/tsconfig.server.json",
+  "extends": "../../.nuxt/tsconfig.server.json",
   "compilerOptions": {
     "lib": ["ES2020"],
     "module": "ESNext",

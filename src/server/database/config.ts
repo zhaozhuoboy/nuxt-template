@@ -8,7 +8,8 @@ const dbConfig = {
   password: process.env.DB_PASSWORD || '123456',
   database: process.env.DB_NAME || 'nuxt_start_app',
   dialect: 'mysql' as const,
-  logging: console.log,
+  logging: undefined,
+  // logging: console.log,
   timezone: '+08:00',
   define: {
     timestamps: true,
